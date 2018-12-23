@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='bootstrap.css') }}"></link>
+    <link rel="stylesheet" href="./css/bootstrap-theme.css"></link>
+</head>
+<body>
+<div>显示字符串：{{ v1 }}</div>
+<div>循环列表：
+    {% for foo in v2 %}
+        <li>{{ foo }}</li>
+    {% endfor %}
+</div>
+<div>
+    通过索引获取列表值：v2.2
+</div>
+<div>
+    遍历字典：
+    {% for k,v in v3.items() %}
+        <li>{{ k }} {{ v }}</li>
+    {% endfor %}
+    {{ v3.k1 }}
+    {{ v3.get("k1") }}
+</div>
+<div>
+
+    输出html标签：
+    {{ v4 }}
+</div>
+<div>
+    调用后台函数：
+    <h1>{{ test1(1,2) }}</h1>
+    <h1>{{ test2(1,2) }}</h1>
+</div>
+</body>
+</html>

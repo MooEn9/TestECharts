@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>华迪-数据洞察</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="Keywords"></meta>
+    <meta name="Description"></meta>
+    <link href="/static/css/monui.css" type="text/css" rel="stylesheet"></link>
+    <link href="/static/css/font-awesome.min.css" type="text/css" rel="stylesheet"></link>
+    <link href="/static/css/common.css" type="text/css" rel="stylesheet"></link>
+    <link href="/static/css/style.css" type="text/css" rel="stylesheet"></link>
+    <link href="/static/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet"></link>
+    <link href="/static/css/layer.css" type="text/css" rel="stylesheet"></link>
+    <link href="/static/css/style.css" type="text/css" rel="stylesheet"></link>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/form.js"></script>
+    <script type="text/javascript" src="/static/js/dialog.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/static/js/dmp-datatable.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/static/js/messages_cn.js"></script>
+    <script type="text/javascript" src="/static/js/common.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.form.js"></script>
+    <script type="text/javascript" src="/static/js/highcharts.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.easing.js"></script>
+    <script type="text/javascript" src="/static/js/tagcanvas.min.js"></script>
+    <script type="text/javascript" src="/static/js/vendors/echarts.min.js"></script>
+    <script type="text/javascript" src="/static/js/vendors/echarts-gl.min.js"></script>
+    <script type="text/javascript" src="/static/js/vendors/ecStat.min.js"></script>
+    <script type="text/javascript" src="/static/js/vendors/dataTool.min.js"></script>
+    <script type="text/javascript" src="/static/js/vendors/china.js"></script>
+    <script type="text/javascript" src="/static/js/vendors/world.js"></script>
+    <script type="text/javascript" src="/static/js/vendors/bmap.min.js"></script>
+    <script type="text/javascript" src="/static/js/vendors/simplex.js"></script>
+    {#    <script type="text/javascript" src="/static/js/vendors/dark.js"></script>#}
+    {#    <script type="text/javascript" src="/static/js/vendors/shine.js"></script>#}
+
+    {#    <div id="container" style="height: 100%"></div>#}
+    {#<script type="text/javascript" src="/static/js/statistics_per_month.js"></script>#}
+
+</head>
+<body>
+<div>
+
+
+    <div id="statistical-content" num="1" style="overflow:auto;">
+        <div class="head-box top-box">
+            <div class="top-box-1">
+                <img src="/static/images/back.png" alt=""></img>
+                <a href="http://www.cddata.gov.cn/odweb/index.htm"></a>
+            </div>
+            <div class="top-box-2">
+                <span>华迪数据分析</span>
+            </div>
+            <div class="top-box-3">
+                <span class="date" id="time"></span>
+                <img src="/static/images/position.png" alt=""></img><span class="area"></span>
+            </div>
+        </div>
+        <div class="content-box">
+            <div class="column-1">
+                <div class="column-1-l">
+                    <div class="item-t-l"></div>
+                    <div class="item-t-r"></div>
+                    <div class="item-b-l"></div>
+                    <div class="item-b-r"></div>
+                    <h5><i class="icon"></i>数据总览</h5>
+                    <div class="box box-1 content-box-extend1">
+                        <div class="count-box3">
+                            <span>数据总量</span>
+                            <p id="appCount">{{ item_count }}</p>
+                        </div>
+
+                    </div>
+                    <div class="box box2 content-box-extend1">
+                        <div class="count-box3">
+                            <span>采集范围</span>
+                            <p id="appCount" style="font-size: 20px;">{{ date_start }}～{{ date_end }}</p>
+                        </div>
+                    </div>
+                    <div class="column-1-l-2">
+                        <div class="item-t-l"></div>
+                        <div class="item-t-r"></div>
+                        <div class="item-b-l"></div>
+                        <div class="item-b-r"></div>
+                        <h5><i class="icon"></i>访问排名</h5>
+                        <div class="views" id="page_alexa">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="column-1-m">
+                    <div class="head-box">
+                        <div class="box">
+                            <p class="title">平台总访问量</p>
+                            <p class="num">
+                                <span id="totalViewCnt">{{ access_sum }}</span>次</p>
+                        </div>
+                        <div class="box">
+                            <p class="title">单日最大访问量</p>
+                            <p class="num">
+                                <span id="maxViewCnt">{{ day_max }}</span>次</p>
+                        </div>
+                        <div class="box">
+                            <p class="title">平均日活</p>
+                            <p class="num">
+                                <span id="VisitCurCount">{{ day_avg }}</span>次</p>
+                        </div>
+                    </div>
+                    <div class="map-box">
+                        <div id="map-container" style="height: 100%;min-height: 550px;margin-top: 20px;">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="column-1-r">
+                    <div class="column-1-r-1">
+                        <div class="item-t-l"></div>
+                        <div class="item-t-r"></div>
+                        <div class="item-b-l"></div>
+                        <div class="item-b-r"></div>
+                        <h5><i class="icon"></i>网页分类统计</h5>
+                        <div class="sort" id="page_type">
+
+                        </div>
+                    </div>
+                    <div class="column-1-r-2">
+                        <div class="item-t-l"></div>
+                        <div class="item-t-r"></div>
+                        <div class="item-b-l"></div>
+                        <div class="item-b-r"></div>
+                        <h5><i class="icon"></i>搜索关键词</h5>
+                        <div class="box">
+                            <div class="trade" id="trade">
+                                <div id="myCanvasContainer2">
+                                    <canvas height="244" id="cloudCanvas"></canvas>
+                                </div>
+                                <div id="tags2">
+                                    <ul id="regBusiness">
+                                        <li>
+{#                                            <a href="javascript:;">注册用户所属行业</a>#}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column-2">
+                <div class="column-2-l">
+                    <div class="item-t-l"></div>
+                    <div class="item-t-r"></div>
+                    <div class="item-b-l"></div>
+                    <div class="item-b-r"></div>
+                    <h5><i class="icon"></i>网页类型访问数据分析</h5>
+                    <div class="box department" id="UserClickStats">
+
+                    </div>
+                </div>
+                <div class="column-2-m">
+                    <div class="item-t-l"></div>
+                    <div class="item-t-r"></div>
+                    <div class="item-b-l"></div>
+                    <div class="item-b-r"></div>
+                    <h5><i class="icon"></i><span id="departmentName">其他类网页访问数据分析</span></h5>
+                    <div class="box radar" id="OtherPageType">
+
+                    </div>
+                </div>
+                <div class="column-2-r">
+                    <div class="item-t-l"></div>
+                    <div class="item-t-r"></div>
+                    <div class="item-b-l"></div>
+                    <div class="item-b-r"></div>
+                    <h5><i class="icon"></i>其他类网页用户行为分析</h5>
+                    <div class="box line-chart" id="other-inner-page"></div>
+                </div>
+            </div>
+            <div class="column-3">
+                <div class="column-3-l">
+                    <div class="item-t-l"></div>
+                    <div class="item-t-r"></div>
+                    <div class="item-b-l"></div>
+                    <div class="item-b-r"></div>
+                    <h5><i class="icon"></i>咨询类网页分布情况</h5>
+                    <div class="box" id="consult"></div>
+                </div>
+                <div class="column-3-r">
+                    <div class="item-t-l"></div>
+                    <div class="item-t-r"></div>
+                    <div class="item-b-l"></div>
+                    <div class="item-b-r"></div>
+                    <h5><i class="icon"></i>无具体目标的用户数据分析</h5>
+                    <div class="box" id="notarget" style="height: 90%"></div>
+                </div>
+            </div>
+            <div class="column-4">
+                {#                <div class="column-4-l">#}
+                {#                    <div class="item-t-l"></div>#}
+                {#                    <div class="item-t-r"></div>#}
+                {#                    <div class="item-b-l"></div>#}
+                {#                    <div class="item-b-r"></div>#}
+                {#                    <h5><i class="icon"></i>用户点击次数分析</h5>#}
+                {#                    <div class="top" id="top"></div>#}
+                {#                </div>#}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/main/common.js"></script>
+<script type="text/javascript" src="/static/js/main/page-type.js"></script>
+<script type="text/javascript" src="/static/js/main/page-alexa.js"></script>
+<script type="text/javascript" src="/static/js/main/consult.js"></script>
+<script type="text/javascript" src="/static/js/main/notarget-user.js"></script>
+<script type="text/javascript" src="/static/js/main/other-page-type.js"></script>
+<script type="text/javascript" src="/static/js/main/other-inner-page-type.js"></script>
+<script type="text/javascript" src="/static/js/main/user-click-stats.js"></script>
+
+<script type="text/javascript" src="/static/js/main/statistics_per_month.js"></script>
+</body>
+</html>
